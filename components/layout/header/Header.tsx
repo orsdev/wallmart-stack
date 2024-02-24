@@ -3,11 +3,13 @@
 import { Button } from "@/components/ui/button";
 import { ICON } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import { Grid2X2, Heart, Search, ShoppingBag, User } from "lucide-react";
+import { Heart, Search, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export const Header = () => {
+  const router = useRouter();
   const [search, setSearch] = useState("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +22,7 @@ export const Header = () => {
 
     if (!search) return;
 
-    alert(search);
+    router.push(`/search?q=${search}`);
   };
 
   return (
