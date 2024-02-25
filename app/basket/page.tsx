@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Basket",
 };
 
-export default async function BasketPage() {
+export default function BasketPage() {
   return (
     <div className="w-full p-10 max-w-7xl mx-auto">
       <div className="flex items-center space-x-2">

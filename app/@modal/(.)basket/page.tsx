@@ -26,7 +26,7 @@ export default function BasketInterceptor() {
         }
       }}
     >
-      <DialogContent className="h-4/5 w-full overflow-scroll max-w-3xl">
+      <DialogContent className="h-4/5 w-full overflow-y-scroll max-w-3xl bg-white">
         <DialogHeader>
           <DialogTitle>Basket</DialogTitle>
           <DialogDescription>Contents of your basket</DialogDescription>
