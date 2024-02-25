@@ -3,12 +3,16 @@
 import { Button } from "@/components/ui/button";
 import { ICON } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
+import { ShoppingCart } from "@/store/slices";
 import { Heart, Search, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export const Header = () => {
+  const { cart } = useAppSelector((state) => state.cart);
+
   const router = useRouter();
   const [search, setSearch] = useState("");
 
@@ -24,6 +28,8 @@ export const Header = () => {
 
     router.push(`/search?q=${search}`);
   };
+
+  const totalItems = cart?.length;
 
   return (
     <header className="flex  flex-col lg:flex-row gap-x-8  gap-y-4 py-6 px-4 bg-walmart items-center justify-center lg:justify-start">
@@ -75,13 +81,15 @@ export const Header = () => {
 
         {/* Cart */}
         <Link
-          href="/"
+          href="/basket"
           className="hidden sm:flex text-white font-bold items-center space-x-2 text-sm"
         >
           <ShoppingBag size={20} />
           <div className="flex flex-col">
-            <span className="text-xs font-extralight">No Items</span>
-            <span>$0.00</span>
+            <span className="text-xs font-extralight">
+              {totalItems > 0 ? totalItems : "No"} Item(s)
+            </span>
+            <span>${ShoppingCart.calculateSubTotal(cart).toFixed(2)}</span>
           </div>
         </Link>
       </div>

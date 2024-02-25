@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import { AddToCart } from "./_components";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -76,7 +77,7 @@ export default async function ProductPage({ searchParams: { id } }: Props) {
         )}
         <p className="text-2xl font-bold mt-2">${price}</p>
         {/* Add to Cart Button */}
-        {/* <AddToCart product={product} /> */}
+        <AddToCart product={data} />
         <hr />
       </div>
     </div>

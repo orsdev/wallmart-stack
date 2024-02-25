@@ -3,7 +3,6 @@ import rootReducer from "./RootReducer";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { ProductsApi } from "./api";
 
 const persistConfig = {
   key: "root",
@@ -14,9 +13,7 @@ const persistConfig = {
 export const store = configureStore({
   reducer: persistReducer(persistConfig, rootReducer),
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(
-      ProductsApi.middleware
-    ),
+    getDefaultMiddleware({ serializableCheck: false }),
 });
 
 export const persistor = persistStore(store);

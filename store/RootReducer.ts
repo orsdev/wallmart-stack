@@ -1,8 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { ProductsApi } from "./api";
+import cartSlice from "./slices/cart/cartSlice";
 
 const rootReducer = combineReducers({
-  [ProductsApi.reducerPath]: ProductsApi.reducer,
+  cart: cartSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

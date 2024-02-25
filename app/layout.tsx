@@ -1,9 +1,9 @@
 import { Header } from "@/components/layout";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import StoreProvider from "@/store/StoreProvider";
 
 import "./globals.css";
-import StoreProvider from "@/store/StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,15 +14,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <StoreProvider>
           <Header />
-          {children}
+          <div className="flex flex-col">
+            {modal}
+            {children}
+          </div>
         </StoreProvider>
       </body>
     </html>
